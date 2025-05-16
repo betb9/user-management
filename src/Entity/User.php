@@ -6,10 +6,15 @@ use ApiPlatform\Metadata\ApiResource;
 use App\Entity\Traits\Timestampable;
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\HasLifecycleCallbacks]
 #[ApiResource]
+#[UniqueEntity(
+    fields: ['email'],
+    message: 'Cet adresse email est déjà utilisée.',
+)]
 class User
 {
 
