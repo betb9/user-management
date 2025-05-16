@@ -36,6 +36,7 @@ class User
 
     #[ORM\Column(length: 255, unique: true)]
     #[Assert\NotBlank(message: "L'adresse email est obligatoire.")]
+    #[Assert\Email(message: "L'adresse email n'est pas valide.")]
     private ?string $email = null;
 
     public function getId(): ?int
