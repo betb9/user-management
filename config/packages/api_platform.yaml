@@ -1,7 +1,8 @@
 api_platform:
-    title: Hello API Platform
+    title: User Management for GPA
     version: 1.0.0
     defaults:
+        pagination_enabled: false
         stateless: true
         cache_headers:
             vary: ['Content-Type', 'Authorization', 'Origin']
