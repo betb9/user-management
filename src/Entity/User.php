@@ -7,6 +7,7 @@ use App\Entity\Traits\Timestampable;
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\HasLifecycleCallbacks]
@@ -26,12 +27,15 @@ class User
     private ?int $id = null;
 
     #[ORM\Column(length: 100)]
+    #[Assert\NotBlank(message: "Le prénom est obligatoire.")]
     private ?string $firstName = null;
 
     #[ORM\Column(length: 100)]
+    #[Assert\NotBlank(message: "Le nom est obligatoire.")]
     private ?string $lastName = null;
 
     #[ORM\Column(length: 255, unique: true)]
+    #[Assert\NotBlank(message: "L'adresse email est obligatoire.")]
     private ?string $email = null;
 
     public function getId(): ?int
