@@ -15,12 +15,6 @@ class UserForm extends AbstractType
             ->add('firstName')
             ->add('lastName')
             ->add('email')
-            ->add('createdAt', null, [
-                'widget' => 'single_text',
-            ])
-            ->add('updatedAt', null, [
-                'widget' => 'single_text',
-            ])
         ;
     }
 
