@@ -28,15 +28,18 @@ class User
 
     #[ORM\Column(length: 100)]
     #[Assert\NotBlank(message: "Le prénom est obligatoire.")]
+    #[Assert\Type('string', message: "Le prénom doit être une chaîne de caractère.")]
     private ?string $firstName = null;
 
     #[ORM\Column(length: 100)]
     #[Assert\NotBlank(message: "Le nom est obligatoire.")]
+    #[Assert\Type('string', message: "Le nom doit être une chaîne de caractère.")]
     private ?string $lastName = null;
 
     #[ORM\Column(length: 255, unique: true)]
     #[Assert\NotBlank(message: "L'adresse email est obligatoire.")]
     #[Assert\Email(message: "L'adresse email n'est pas valide.")]
+    #[Assert\Type('string', message: "L'adresse email doit être une chaîne de caractère.")]
     private ?string $email = null;
 
     public function getId(): ?int
