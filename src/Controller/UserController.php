@@ -41,4 +41,23 @@ final class UserController extends AbstractController
             'is_edit' => false
         ]);
     }
+
+    #[Route('/edit/{id}', name: 'edit')]
+    public function edit(Request $request, User $user, EntityManagerInterface $em): Response
+    {
+        $form = $this->createForm(UserForm::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em->flush();
+
+            $this->addFlash('success', 'Utilisateur mis à jour.');
+            return $this->redirectToRoute('app_user_index');
+        }
+
+        return $this->render('user/new.html.twig', [
+            'form' => $form->createView(),
+            'is_edit' => true,
+        ]);
+    }
 }
